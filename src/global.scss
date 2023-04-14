@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
+
+$base-color: #443f5d;
+* {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+nav#tab-menu {
+  background: $base-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .brand,
+  .mobile-brand {
+    display: none;
+    padding: 0 25px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+  }
+  @media (min-width: 640px) {
+    .brand {
+      display: block;
+    }
+  }
+  @media (max-width: 640px) {
+    .mobile-brand {
+      display: block;
+    }
+  }
+}
+
+.search-container {
+  position: relative;
+  width: min(100%, 640px);
+
+  & > .search-input-container {
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+
+    input[type="search"] {
+      border: none;
+      background: transparent;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      color: #fff;
+      outline: 0;
+      width: min(100%, 640px);
+      margin-left: 10px;
+      transition: all 0.2s;
+      padding: 7px;
+      padding-left: 0;
+      padding-right: 0;
+      &:focus {
+        border-bottom: 1px solid #fff;
+      }
+    }
+  }
+  & > .search-result-container {
+    transition: all 0.2s;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @media (max-width: 640px) {
+      width: 100vw;
+    }
+    @media (min-width: 640px) {
+      width: 100%;
+    }
+
+    & > .search-result-item {
+      padding: 20px;
+      transition: all 0.2s;
+      border-left: 5px solid $base-color;
+      cursor: pointer;
+      &:hover,
+      &:active {
+        border-left-color: rgba($base-color, 0.5);
+      }
+      &:nth-child(2n) {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      &:nth-child(2n + 1) {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      & > h2 {
+        font-weight: 400;
+        padding-top: 0;
+        padding-bottom: 10px;
+      }
+      & > .detail {
+        @media (min-width: 640px) {
+          display: flex;
+          justify-content: space-between;
+        }
+        & > small {
+          display: block;
+          white-space: nowrap;
+          & > span {
+            margin-left: 5px;
+          }
+          &:first-of-type{
+            width:17%;
+          }
+          &:nth-child(2){
+            width:40%;
+          }
+          &:last-of-type{
+            width:17%;
+          }
+        }
+      }
+    }
+  }
+}
